@@ -7,6 +7,7 @@ class User < ApplicationRecord
   def set_auth_token
     self.token = SecureRandom.base58(36)
     self.token_expiry = Time.now + 1.day
+    save
   end
 
   def valid_token?(id, token)
