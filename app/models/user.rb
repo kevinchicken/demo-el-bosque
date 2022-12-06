@@ -10,8 +10,7 @@ class User < ApplicationRecord
     save
   end
 
-  def valid_token?(id, token)
-    user = User.find(id)
-    return if user[:token] == token && user[:token_expiry] > Time.now
+  def valid_token?(token)
+    self.token == token && token_expiry > Time.now
   end
 end
