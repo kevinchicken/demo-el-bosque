@@ -25,6 +25,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem 'devise'
+gem 'kaminari'
 gem 'pg'
 gem 'pry'
 
