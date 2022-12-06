@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   post '/api_login', to: 'api/login#auth_api'
-  get '/news', to: 'api/afterlogin#after_login'
+  get '/news', to: 'api/afterlogin#news'
+  get '/profile', to: 'api/afterlogin#profile'
+  get '/logout', to: 'api/afterlogin#logout'
   root to: 'landing#index'
 end
