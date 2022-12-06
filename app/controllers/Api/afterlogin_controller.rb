@@ -7,9 +7,18 @@ class Api::AfterloginController < Api::BaseController
   end
 
   def profile
+    user = User.find(params[:id])
+    render json: { success: true,
+                   email: user.email,
+                   image: 'Soy una imagen de gatitos',
+                   full_name: 'Soy un nombre completo' }
   end
 
   def logout
+    user = User.find(params[:id])
+    user.token, user.token_expiry = nil
+    user.save
+    render json: { success: true, message: 'La sesión ha finalizado.' }
   end
 
   private
