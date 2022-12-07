@@ -3,6 +3,7 @@
 # Base controller contains the method that checks if the user has a valid token
 class Api::BaseController < ApplicationController
   skip_before_action :verify_authenticity_token
+  include ActiveStorage::SetCurrent
 
   private
 

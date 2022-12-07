@@ -8,7 +8,7 @@ class Api::UsersController < Api::BaseController
     user = User.find(request.headers['Id'])
     render json: { success: true,
                    email: user.email,
-                   image: 'Soy una imagen de gatitos',
-                   full_name: 'Soy un nombre completo' }
+                   image: url_for(user.image),
+                   full_name: user.full_name }
   end
 end
