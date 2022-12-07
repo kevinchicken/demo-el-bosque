@@ -1,6 +1,8 @@
-# Login contains a method to sign in a user from the mobile app.
-class Api::LoginController < Api::BaseController
-  def auth_api
+# frozen_string_literal: true
+
+# Sessions controller containg mobile login and logout methods
+class Api::SessionsController < Api::BaseController
+  def login
     error_email = { success: false,
                     message: 'There is no account with the email provided.' }
     error_password = { success: false,
@@ -12,5 +14,13 @@ class Api::LoginController < Api::BaseController
 
     user.set_auth_token
     render json: { success: true, token: user[:token], id: user[:id] }
+  end
+
+  def logout
+    after_login
+    user = User.find(request.headers['Id'])
+    user.token, user.token_expiry = nil
+    user.save
+    render json: { success: true, message: 'La sesión ha finalizado.' }
   end
 end

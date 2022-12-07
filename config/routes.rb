@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  get 'login/auth_api'
-  get 'landing/index'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  post '/api_login',    to: 'api/login#auth_api'
-  get '/news',          to: 'api/news#news_index'
-  get '/profile',       to: 'api/afterlogin#profile'
-  get '/logout',        to: 'api/afterlogin#logout'
+  post '/api_login',    to: 'api/sessions#login'
+  get '/logout',        to: 'api/sessions#logout'
+  get '/news',          to: 'api/news#pages'
+  get '/news_show',     to: 'api/news#show'
+  get '/profile',       to: 'api/users#profile'
   root                  to: 'landing#index'
 end

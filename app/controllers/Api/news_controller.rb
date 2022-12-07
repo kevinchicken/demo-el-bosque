@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
+# News controller containg methods to deliver news and news pages to the mobile app
 class Api::NewsController < Api::BaseController
   before_action :after_login
 
-  def news_pages(page)
+  def pages_info(page)
     render json: { success: true,
                    news: News.index(page),
                    current_page: News.current(page),
@@ -11,8 +14,13 @@ class Api::NewsController < Api::BaseController
                    last_page?: News.last?(page) }
   end
 
-  def news_index
+  def pages
     page = params[:page]
-    news_pages(page)
+    pages_info(page)
+  end
+
+  def show
+    render json: { sucess: true,
+                   new: News.find(params[:news_id]) }
   end
 end
