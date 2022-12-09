@@ -37,7 +37,9 @@
   </div>
 
   <div>
+    <% if resource.image.attached? %>
     <%= image_tag(url_for(resource.image)) %>
+    <% end%>
   </div>
 
   <div class="field">

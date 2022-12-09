@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   get '/api_profile',   to: 'api/users#profile'
   get 'news/new',       to: 'news#new', as: 'new_news' # new news
   post 'news',          to: 'news#create' # create news
+  get 'news/:id/edit',  to: 'news#edit', as: 'edit_new' # edit
+  patch 'news/:id',     to: 'news#update' # update (as needed)
+  put 'news/:id',       to: 'news#update' # update (full replacement)
   root                  to: 'landing#index'
 end

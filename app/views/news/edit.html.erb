@@ -1,0 +1,27 @@
+<h1>Edit News</h1>
+<%= form_with model: new, url: news_path, method: :patch, local: true, scope: :new do |f| %>
+<div>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %>
+</div>
+
+<div>
+  <%= f.label :subtitle %><br>
+  <%= f.text_field :subtitle %>
+</div>
+
+<div>
+  <%= f.label :content %><br>
+  <%= f.text_field :content %>
+</div>
+
+<div>
+  <%= f.label :image %><br>
+  <%= f.text_field :image %>
+</div>
+
+<%= f.submit "Update News" %>
+
+<% end %>
+
+<%= link_to "Back", :back %>
