@@ -4,9 +4,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   post '/api_login',    to: 'api/sessions#login'
-  get '/logout',        to: 'api/sessions#logout'
-  get '/news',          to: 'api/news#pages'
-  get '/news_show',     to: 'api/news#show'
-  get '/profile',       to: 'api/users#profile'
+  get '/api_logout',    to: 'api/sessions#logout'
+  get '/api_news',      to: 'api/news#pages'
+  get '/api_news_show', to: 'api/news#show'
+  get '/api_profile',   to: 'api/users#profile'
+  get 'news/new',       to: 'news#new', as: 'new_news' # new news
+  post 'news',          to: 'news#create' # create news
   root                  to: 'landing#index'
 end
