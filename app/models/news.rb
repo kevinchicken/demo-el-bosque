@@ -2,6 +2,7 @@
 
 # Class news delivers news pages
 class News < ApplicationRecord
+  has_rich_text :content
   class << self
     def index(page)
       newest_news_ordered(page)

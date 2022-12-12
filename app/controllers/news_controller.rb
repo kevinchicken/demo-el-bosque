@@ -18,7 +18,7 @@ class NewsController < ApplicationController
     end
     if new.save
       flash[:success] = 'News created successfully'
-      redirect_to news_url
+      redirect_to root_path
     else
       flash.now[:error] = 'News could not be saved'
       render :new, locals: { new: new }
@@ -36,6 +36,7 @@ class NewsController < ApplicationController
     new = News.find(params[:id])
     respond_to do |format|
       format.html do
+        binding.pry
         if new.update(params.require(:new).permit(:title, :subtitle, :content, :image))
           flash[:success] = 'News updated successfully'
           redirect_to news_url

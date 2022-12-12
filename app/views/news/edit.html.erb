@@ -1,5 +1,5 @@
 <h1>Edit News</h1>
-<%= form_with model: new, url: news_path, method: :patch, local: true, scope: :new do |f| %>
+<%= form_with model: new, url: news_path, method: :patch, data: { "turbo-method": :patch }, local: true, scope: :new do |f| %>
 <div>
   <%= f.label :title %><br>
   <%= f.text_field :title %>
@@ -12,7 +12,7 @@
 
 <div>
   <%= f.label :content %><br>
-  <%= f.text_field :content %>
+  <%= f.rich_text_area :content %>
 </div>
 
 <div>
@@ -24,4 +24,4 @@
 
 <% end %>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", root_path %>
