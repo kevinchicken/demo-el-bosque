@@ -10,6 +10,10 @@ class NewsController < ApplicationController
     end
   end
 
+  def show
+    @news = News.find(params[:id])
+  end
+
   def create
     new = News.new(params.require(:new).permit(:title, :subtitle, :content, :image))
     respond_to do |format|
@@ -36,7 +40,6 @@ class NewsController < ApplicationController
     new = News.find(params[:id])
     respond_to do |format|
       format.html do
-        binding.pry
         if new.update(params.require(:new).permit(:title, :subtitle, :content, :image))
           flash[:success] = 'News updated successfully'
           redirect_to news_url
@@ -44,6 +47,17 @@ class NewsController < ApplicationController
           flash.now[:error] = 'Error: News could not be updated successfully'
           render :edit, locals: { new: new }
         end
+      end
+    end
+  end
+
+  def destroy
+    new = News.find(params[:id])
+    new.destroy
+    respond_to do |format|
+      format.html do
+        flash[:success] = 'New removed successfully'
+        redirect_to root_path
       end
     end
   end
