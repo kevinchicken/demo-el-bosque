@@ -3,6 +3,15 @@
 # Class news delivers news pages
 class News < ApplicationRecord
   has_rich_text :content
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end
+
+  validates :title, presence: true
+  validates :subtitle, presence: true
+  validates :content, presence: true
+  validates :image, presence: true
+
   class << self
     def index(page)
       newest_news_ordered(page)

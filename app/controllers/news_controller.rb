@@ -61,4 +61,8 @@ class NewsController < ApplicationController
       end
     end
   end
+
+  def carousel
+    @news = News.order(created_at: :desc).page params[:page]
+  end
 end

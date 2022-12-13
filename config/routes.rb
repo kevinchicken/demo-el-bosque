@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'landing/index'
   get 'landing/mercadopago'
+  get 'news/carousel'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

@@ -1,0 +1,13 @@
+.main-new > img {
+  height: 300px;
+  width: 300px;
+}
+
+.secondary-new {
+  display: flex;
+  flex-direction: row;
+}
+.secondary-new > img {
+    height: 100px;
+    width: 100px;
+}

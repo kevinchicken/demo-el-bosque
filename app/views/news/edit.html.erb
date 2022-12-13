@@ -17,8 +17,16 @@
 
 <div>
   <%= f.label :image %><br>
-  <%= f.text_field :image %>
+  <%= f.file_field :image,
+        placeholder: 'Upload picture',
+        direct_upload: true %>
 </div>
+
+  <div>
+    <% if new.image.attached? %>
+    <%= image_tag(url_for(new.image)) %>
+    <% end%>
+  </div>
 
 <%= f.submit "Update News" %>
 

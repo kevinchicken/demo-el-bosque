@@ -6,6 +6,7 @@
 <h1>Hello!</h1>
 <%= link_to "Home", root_path %>
 <% if current_user.present? %>
+<%= link_to "News", news_carousel_path %>
 <%= link_to "Edit user", edit_user_registration_path %>
 <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete } %>
   <% if current_user.admin? %>

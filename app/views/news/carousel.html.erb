@@ -1,0 +1,27 @@
+<h1>News</h1>
+<% @news.each do |new| %>
+  <% if new == News.last %>
+  <div class="main-new">
+    <div>
+      <%= image_tag new.image %>
+    </div>
+    <div>
+      <h2><%= link_to new.title, news_show_path(new.id) %></h2>
+      <h3><%= new.subtitle %></h3>
+    </div>
+  </div>
+  <% else %>
+  <div class="secondary-new">
+    <div><%= image_tag new.image, size: "150" %></div>
+    <div>
+      <h3><%= link_to new.title, news_show_path(new.id) %></h3>
+      <h4><%= new.subtitle %></h4>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+<%= paginate @news %>
+<%= link_to "Home", root_path %>
+<% if current_user.admin? %>
+  <%= link_to "Create news", news_new_path %>
+<% end %>
