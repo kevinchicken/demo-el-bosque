@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_09_153044) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_12_143054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_153044) do
     t.string "title", null: false
     t.string "subtitle", null: false
     t.string "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "processed_payments", force: :cascade do |t|
+    t.string "token"
+    t.string "issuer_id"
+    t.string "payment_method_id"
+    t.string "transaction_amount"
+    t.string "installments"
+    t.text "description"
+    t.string "email"
+    t.string "amount"
+    t.string "identification_type"
+    t.string "identification_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
