@@ -11,6 +11,10 @@ class NewsController < ApplicationController
   end
 
   def show
+    if News.find_by(id: params[:id]).blank?
+      return flash[:notice] = 'No existe noticia con el ID seleccionado', redirect_to(root_path)
+    end
+
     @news = News.find(params[:id])
   end
 
@@ -22,7 +26,7 @@ class NewsController < ApplicationController
     end
     if new.save
       flash[:success] = 'News created successfully'
-      redirect_to root_path
+      redirect_to news_path(new)
     else
       flash.now[:error] = 'News could not be saved'
       render :new, locals: { new: new }
@@ -30,6 +34,10 @@ class NewsController < ApplicationController
   end
 
   def edit
+    if News.find_by(id: params[:id]).blank?
+      return flash[:notice] = 'No existe noticia con el ID seleccionado', redirect_to(root_path)
+    end
+
     new = News.find(params[:id])
     respond_to do |format|
       format.html { render :edit, locals: { new: new } }
@@ -52,6 +60,10 @@ class NewsController < ApplicationController
   end
 
   def destroy
+    if News.find_by(id: params[:id]).blank?
+      return flash[:notice] = 'No existe noticia con el ID seleccionado', redirect_to(root_path)
+    end
+
     new = News.find(params[:id])
     new.destroy
     respond_to do |format|
