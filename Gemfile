@@ -24,6 +24,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'aws-sdk-s3', require: false
 gem 'cancancan'
 gem 'devise'
 gem 'kaminari'
