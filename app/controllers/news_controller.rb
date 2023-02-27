@@ -20,10 +20,6 @@ class NewsController < ApplicationController
 
   def create
     new = News.new(params.require(:new).permit(:title, :subtitle, :content, :image))
-    respond_to do |format|
-      format.html do
-      end
-    end
     if new.save
       flash[:success] = 'News created successfully'
       redirect_to news_path(new)
