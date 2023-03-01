@@ -7,7 +7,7 @@ class Ability
   def initialize(user)
     can :read, News, public: true
 
-    return unless user.try(:admin?)
+  #  return unless user.try(:admin?)
 
     can :manage, News
   end

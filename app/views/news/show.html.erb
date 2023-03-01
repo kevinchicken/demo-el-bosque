@@ -1,13 +1,11 @@
-<div class="container">
-  <%= link_to "Home", root_path %>
-  <%= link_to "News", news_carousel_path %>
-  <% if current_user.admin? %>
-  <%= link_to '🖋', edit_new_path(@news.id) %>
-  <%= link_to '🗑', destroy_news_path(@news.id), data: { "turbo-method": :delete } %>
-  <% end %>
-  <br>
-  <%= image_tag @news.image %>
-  <h1><%= @news.title %></h1>
-  <h2><%= @news.subtitle %></h2>
-  <p><%= @news.content %></p>
-</div>
+<%= link_to "Home", root_path %>
+<%= link_to "Noticias", news_carousel_path %>
+<% if current_user.admin? %>
+<%= link_to '🖋', edit_new_path(@news.id) %>
+<%= link_to '🗑', destroy_news_path(@news.id), data: { "turbo-method": :delete } %>
+<% end %>
+<br>
+<%= image_tag @news.image %>
+<h1><%= @news.title %></h1>
+<h2><%= @news.subtitle %></h2>
+<p><%= @news.content %></p>

@@ -1,4 +1,4 @@
-<h1>Edit News</h1>
+<h1>Editar noticias</h1>
 <%= form_with model: new, url: update_news_path, data: { "turbo-method": :patch }, local: true, scope: :new do |f| %>
 <div>
   <%= f.label :title %><br>
@@ -18,7 +18,7 @@
 <div>
   <%= f.label :image %><br>
   <%= f.file_field :image,
-        placeholder: 'Upload picture',
+        placeholder: 'Subir imagen',
         direct_upload: true %>
 </div>
 
@@ -28,11 +28,11 @@
     <% end%>
   </div>
 
-<%= f.submit "Update News" %>
+<%= f.submit "Editar" %>
 
 <% end %>
 
-<%= link_to "Back", news_show_path %>
+<%= link_to "Atrás", news_show_path %>
 
 <% flash.each do |type, msg| %>
   <div class="alert alert-info">
